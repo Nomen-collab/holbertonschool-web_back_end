@@ -4,10 +4,6 @@ function countStudents(path) {
   try {
     const data = fs.readFileSync(path, 'utf8');
     const lines = data.split('\n').filter((line) => line.trim() !== '');
-    
-    // The 'headers' variable was not used, so the line is removed.
-    // const headers = lines[0].split(',');
-
     const students = lines.slice(1);
 
     console.log(`Number of students: ${students.length}`);
