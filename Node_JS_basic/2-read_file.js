@@ -1,20 +1,19 @@
-/**
- * Reads a database file synchronously and prints student statistics.
- * @param {string} path The path to the database file.
- */
 const fs = require('fs');
 
 function countStudents(path) {
   try {
     const data = fs.readFileSync(path, 'utf8');
-    const lines = data.split('\n').filter(line => line.trim() !== '');
-    const headers = lines[0].split(',');
+    const lines = data.split('\n').filter((line) => line.trim() !== '');
+    
+    // The 'headers' variable was not used, so the line is removed.
+    // const headers = lines[0].split(',');
+
     const students = lines.slice(1);
 
     console.log(`Number of students: ${students.length}`);
 
     const fields = {};
-    students.forEach(student => {
+    students.forEach((student) => {
       const parts = student.split(',');
       const field = parts[parts.length - 1].trim();
       const firstName = parts[0].trim();
