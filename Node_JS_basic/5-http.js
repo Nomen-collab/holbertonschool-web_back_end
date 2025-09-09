@@ -12,13 +12,13 @@ const port = 1245;
 function countStudents(path) {
   return new Promise((resolve, reject) => {
     fs.readFile(path, 'utf8')
-      .then(data => {
-        const lines = data.split('\n').filter(line => line.trim() !== '');
+      .then((data) => {
+        const lines = data.split('\n').filter((line) => line.trim() !== '');
         const students = lines.slice(1);
         let response = `Number of students: ${students.length}\n`;
 
         const fields = {};
-        students.forEach(student => {
+        students.forEach((student) => {
           const parts = student.split(',');
           const field = parts[parts.length - 1].trim();
           const firstName = parts[0].trim();
@@ -51,11 +51,11 @@ const app = http.createServer((req, res) => {
   } else if (req.url === '/students') {
     const databasePath = process.argv[2];
     countStudents(databasePath)
-      .then(data => {
+      .then((data) => {
         res.statusCode = 200;
         res.end(`This is the list of our students\n${data}`);
       })
-      .catch(error => {
+      .catch((error) => {
         res.statusCode = 500;
         res.end(`This is the list of our students\n${error.message}`);
       });
