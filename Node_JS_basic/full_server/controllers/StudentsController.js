@@ -6,7 +6,9 @@ class StudentsController {
     readDatabase(databasePath)
       .then((fields) => {
         let responseText = 'This is the list of our students\n';
-        const sortedFields = Object.keys(fields).sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+        const sortedFields = Object.keys(fields).sort(
+          (a, b) => a.toLowerCase().localeCompare(b.toLowerCase()),
+        );
         sortedFields.forEach((field) => {
           const count = fields[field].length;
           const list = fields[field].join(', ');
@@ -34,7 +36,7 @@ class StudentsController {
         if (students) {
           response.status(200).send(`List: ${students.join(', ')}`);
         } else {
-          response.status(200).send(`List: `); // In case the major is valid but has no students
+          response.status(200).send('List: ');
         }
       })
       .catch(() => {

@@ -3,7 +3,8 @@ import fs from 'fs/promises';
 /**
  * Reads a CSV database file and returns a promise with student data by field.
  * @param {string} filePath The path to the database file.
- * @returns {Promise<object>} A promise that resolves with an object of student first names per field.
+ * @returns {Promise<object>} A promise that resolves with an object of student
+ * first names per field.
  */
 const readDatabase = (filePath) => new Promise((resolve, reject) => {
   fs.readFile(filePath, 'utf8')
